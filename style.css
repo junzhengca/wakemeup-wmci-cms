@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#splash_container {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-color:#000000;
+	overflow:hidden;
+}
+
+#school_img {
+	width:100%;
+	height:100%;
+	background-image:url(img/school.jpg);
+	background-size:cover;	
+}
+
+#bottom_mask {
+	height:200px;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background-color:#000000;
+	opacity:0.8;
+	width:100%;
+}
+
+#wordcloud {
+	width:1000px;
+	height:500px;
+	position:absolute;
+	left:0px;
+	background-image:url(img/wordcloud.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	bottom:-75px;
+	opacity:0.5;
+}
+
+#wakemeup_logo {
+	width:572px;
+	height:100px;
+	bottom:150px;
+	right:50px;
+	background-image:url(img/wakemeup_logo.png);
+	background-size:contain;
+	position:absolute;
+}
+
+#subtitle_img {
+	width:289px;
+	height:30px;
+	bottom:100px;
+	right:50px;
+	background-image:url(img/subtitle_img.png);
+	background-size:contain;
+	position:absolute;
+}
+
+#location_img {
+	height:100px;
+	width:402px;
+	background-image:url(img/location_img.png);
+	background-size:contain;
+	position:absolute;
+	bottom:50px;
+	left:100px;
+	opacity:0.8;
+}
+
+#enter_button {
+	height:50px;
+	width:104px;
+	position:absolute;
+	bottom:30px;
+	right:50px;
+	background-image:url(img/enter_button.png);
+	background-size:contain;
+	opacity:0.3;	
+}
