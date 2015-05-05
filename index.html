@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WAKE ME UP - a Walter Murray Symposium</title>
+        <link href="style.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/TweenMax.min.js"></script>
+    </head>
+    
+    <body onhashchange="hash_changed();">
+    	<div id="content_container">
+        	<div id="main_nav">
+            	<ul>
+                	<li><span class="redtext_span">O</span>verview</li>
+                    <li><span class="redtext_span">T</span>imetable</li>
+                    <li><span class="redtext_span">S</span>essions</li>
+                    <li><span class="redtext_span">S</span>ign up</li>
+                </ul>
+            </div>
+            <div id="content_wordcloud"></div>
+            <div id="content_logo"></div>
+        </div>
+    	<div id="splash_container">
+        	<div id="school_img"></div>
+            <div id="bottom_mask"></div>
+            <div id="wordcloud"></div>
+            <div id="wakemeup_logo"></div>
+            <div id="subtitle_img"></div>
+            <div id="location_img"></div>
+            <div id="enter_button" onClick="close_splash_screen();"></div>
+        </div>
+        <script type="text/javascript">
+			//Begin splash screen animation timeline
+			function start_splash_timeline(){
+				var splash_timeline = new TimelineMax({repeat:0});
+				splash_timeline.add(TweenLite.to($("#school_img"),2,{'width':'110%','height':'110%','opacity':1,'top':'-5%','left':'-5%'}));
+				splash_timeline.add(TweenLite.to($("#wakemeup_logo"),0.5,{'opacity':'1','bottom':'150px'}));
+				splash_timeline.add(TweenLite.to($("#subtitle_img"),0.5,{'opacity':'1','right':'50px'}));
+				splash_timeline.add(TweenLite.to($("#location_img"),0.5,{'opacity':'0.8'}));
+				splash_timeline.add(TweenLite.to($("#enter_button"),0.5,{'opacity':'0.3'}));
+			}
+			function start_picture_movement(){
+				var splash_picture_timeline = new TimelineMax({repeat:999});
+				splash_timeline.add(TweenLite.to($("#school_img"),0.5,{'left':'0%'}));
+				splash_timeline.add(TweenLite.to($("#school_img"),0.5,{'left':'-10%'}));
+			}
+			function close_splash_screen(){
+				TweenLite.to($("#splash_container"),1,{'left':'-100%'});	
+			}
+			function hash_changed(){
+				
+			}
+			function startup_hash_check(){
+				if(window.location.hash == ""){
+					window.location.hash = "splash";
+				}
+			}
+			startup_hash_check();
+			start_splash_timeline();
+			start_picture_movement();
+		</script>
+    </body>
+</html>

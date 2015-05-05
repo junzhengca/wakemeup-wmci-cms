@@ -15,8 +15,10 @@
 #school_img {
 	width:100%;
 	height:100%;
+	position:absolute;
 	background-image:url(img/school.jpg);
-	background-size:cover;	
+	background-size:cover;
+	opacity:0;
 }
 
 #bottom_mask {
@@ -44,18 +46,20 @@
 #wakemeup_logo {
 	width:572px;
 	height:100px;
-	bottom:150px;
+	bottom:170px;
 	right:50px;
 	background-image:url(img/wakemeup_logo.png);
 	background-size:contain;
 	position:absolute;
+	opacity:0;
 }
 
 #subtitle_img {
 	width:289px;
 	height:30px;
 	bottom:100px;
-	right:50px;
+	right:100px;
+	opacity:0;
 	background-image:url(img/subtitle_img.png);
 	background-size:contain;
 	position:absolute;
@@ -69,7 +73,7 @@
 	position:absolute;
 	bottom:50px;
 	left:100px;
-	opacity:0.8;
+	opacity:0;
 }
 
 #enter_button {
@@ -80,5 +84,81 @@
 	right:50px;
 	background-image:url(img/enter_button.png);
 	background-size:contain;
-	opacity:0.3;	
+	opacity:0;	
+	transition:all ease 0.3s;
+	cursor:pointer;
+}
+
+#enter_button:hover {
+	right:75px;
+	transition:all ease 0.3s;	
+}
+
+#content_container {
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0px;
+	top:0px;
+	overflow-y:scroll;	
+}
+
+#main_nav {
+	width:100%;
+	height:60px;
+	background-color:#E5E5E5;
+}
+
+#main_nav ul {
+	margin:0;
+	padding:0;
+	padding-right:30px;
+	text-align:right;
+}
+
+#main_nav ul li {
+	list-style:none;
+	display:inline-block;
+	font-size:1em;
+	font-family:Microsoft YaHei;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:60px;
+	cursor:pointer;
+}
+
+#main_nav ul li:hover {
+	border-bottom:#b60000 3px solid;	
+}
+
+.redtext_span {
+	color:#b50000;
+}
+
+#content_logo {
+	position:absolute;
+	left:30px;
+	top:20px;
+	height:75px;
+	background-repeat:no-repeat;
+	width:545px;
+	background-image:url(img/wakemeup_logo_blackver.png);
+	background-size:contain;
+}
+
+#content_wordcloud {
+	width:500px;
+	background-image:url(img/wordcloud.png);
+	position:absolute;
+	left:50%;
+	margin-left:-250px;
+	height:100%;
+	background-size:contain;
+	background-position:top;
+	background-repeat:no-repeat;
+	top:-70px;	
+}
+
+#copyright_bar {
+		
 }
