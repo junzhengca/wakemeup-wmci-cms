@@ -12,7 +12,9 @@
     
     <body onhashchange="hash_changed();">
     	<div id="content_container">
+        	<div id="content_wordcloud"></div>
        		<div id="content_text_container"></div>
+            <div id="content_logo"></div>
         	<div id="main_nav">
             	<ul>
                 	<li onClick="change_hash('overview');"><span class="redtext_span">O</span>verview</li>
@@ -21,8 +23,14 @@
                     <li><span class="redtext_span">S</span>ign up</li>
                 </ul>
             </div>
-            <div id="content_wordcloud"></div>
-            <div id="content_logo"></div>
+            <div id="mobile_nav">
+                <ul>
+                    <li onClick="change_hash('overview');"><span class="redtext_span">O</span>verview</li>
+                    <li onClick="change_hash('timetable');"><span class="redtext_span">T</span>imetable</li>
+                    <li><span class="redtext_span">S</span>essions</li>
+                    <li><span class="redtext_span">S</span>ign up</li>
+                </ul>
+            </div>
         </div>
     	<div id="splash_container">
         	<div id="school_img"></div>
@@ -34,6 +42,8 @@
             <div id="enter_button" onClick="change_hash('overview');"></div>
         </div>
         <div id="loading_icon" style="display:none;"><i class="fa fa-spinner fa-spin"></i></div>
+        <div id="copyright_button"><i class="fa fa-angle-double-left"></i></div>
+</div>
     </body>
     <script type="text/javascript" src="js/include.js"></script>
 </html>
