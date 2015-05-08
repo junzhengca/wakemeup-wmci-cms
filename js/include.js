@@ -31,6 +31,11 @@ function hash_change_page(){
 			$("#content_text_container").html(data);
 			$("#loading_icon").hide();
 		}});
+	} else if (window.location.hash == "#sessions") {
+		$.ajax({url:"pages/sessions.php",success: function(data){
+			$("#content_text_container").html(data);
+			$("#loading_icon").hide();
+		}});
 	}
 }
 
