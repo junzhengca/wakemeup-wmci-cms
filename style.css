@@ -336,14 +336,35 @@
 
 #details_panel {
 	width:90%;
-	height:90%;
+	height:60%;
 	position:fixed;
-	top:5%;
+	top:20%;
 	left:5%;
 	background-color:#FFFFFF;
 	border:#b50000 3px solid;
 	z-index:99;
 	font-family:Microsoft YaHei;
+	display:none;
+}
+
+.session_select_card {
+	width:90%;
+	margin-left:5%;
+	background-color:#EDEDED;
+	height:auto;
+	padding-top:20px;
+	padding-bottom:20px;
+	position:relative;
+	min-height:50px;
+	margin-top:15px;
+}
+
+.session_select_card_num {
+	position:absolute;
+	font-size:3em;
+	color:#DB9395;
+	left:10px;
+	top:10px;	
 }
 
 #details_panel_text {
