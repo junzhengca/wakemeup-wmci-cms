@@ -70,7 +70,7 @@
 </div>
 <div id="session_select_block">
 	<h1>Selections</h1>
-    <h2>CLICK + IN DETAILS PANEL TO ADD A SESSION</h2>
+    <h2 style="font-size:0.8em;">CLICK + IN DETAILS PANEL TO ADD A SESSION</h2>
     <div class="session_select_card">
     	<div class="session_select_card_num">1</div>
     </div>
@@ -80,7 +80,12 @@
     <div class="session_select_card">
     	<div class="session_select_card_num">3</div>
     </div>
-    <h2 style="font-size:0.5em; opacity:0.7;">SESSION SELECTION AND DATA ANALYZE POWERED BY NIYUME PRIVATE API © JUN ZHENG 2015 ALL RIGHTS RESERVED</h2>
+    <h2>FINISHED?</h2>
+    <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after submit.</h2>
+    <div class="red_button">SUBMIT YOUR CHOICES</div>
+    <h2>HAVE A PROFILE CODE?</h2>
+    <div class="red_button">RETRIVE YOUR CHOICES</div>
+    <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
 </div>
 <script type="text/javascript">
 $("#content_container").on('scroll',function(){
