@@ -50,8 +50,8 @@
 ?>
 <h1>Sessions</h1>
 <h3>CLICK ON TITLE TO VIEW MORE</h3>
-<?php foreach($sessions as $data) { ?>
-<div class="sessions_block" onClick='open_detail_panel("<?php echo $data[0]; ?>","<?php echo $data[1]; ?>","<?php echo $data[2]; ?>")'>
+<?php foreach($sessions as $key=>$data) { ?>
+<div class="sessions_block" onClick='open_detail_panel("<?php echo $data[0]; ?>","<?php echo $data[1]; ?>","<?php echo $data[2]; ?>",<?php echo $key; ?>)'>
 	<h4><?php echo $data[0]; ?></h4>
     <h5><?php echo $data[1]; ?></h5>
 </div>
@@ -66,19 +66,22 @@
     <div id="details_panel_close" onClick="close_detail_panel();">
     	<i class="fa fa-times"></i>
     </div>
-    <div id="details_panel_add"><i class="fa fa-plus"></i> ADD TO SELECTION</div>
+    <div id="details_panel_add" onClick="add_to_selection();"><i class="fa fa-plus"></i> ADD TO SELECTION</div>
 </div>
 <div id="session_select_block">
 	<h1>Selections</h1>
     <h2 style="font-size:0.8em;">CLICK + IN DETAILS PANEL TO ADD A SESSION</h2>
     <div class="session_select_card">
     	<div class="session_select_card_num">1</div>
+        <h1 id="session_select_1" style="padding-left:30px; font-size:1em;"></h1>
     </div>
     <div class="session_select_card">
     	<div class="session_select_card_num">2</div>
+        <h1 id="session_select_2" style="padding-left:30px; font-size:1em;"></h1>
     </div>
     <div class="session_select_card">
     	<div class="session_select_card_num">3</div>
+        <h1 id="session_select_3" style="padding-left:30px; font-size:1em;"></h1>
     </div>
     <h2>FINISHED?</h2>
     <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after submit.</h2>
@@ -96,14 +99,39 @@ $("#content_container").on('scroll',function(){
 	}
 });
 
-function open_detail_panel(title,speaker,info) {
+
+var current_id = 0;
+function open_detail_panel(title,speaker,info,id) {
 	$("#details_panel").fadeIn();
 	$("#details_panel_title").html(title);
 	$("#details_panel_speaker").html(speaker);
 	$("#details_panel_info").html(info);
+	current_id = id;
 }
 
 function close_detail_panel(){
 	$("#details_panel").fadeOut();
+}
+
+var session_arr = [];
+var session_data = [];
+<?php foreach($sessions as $key=>$data) { ?>
+	session_data[<?php echo $key; ?>] = ["<?php echo $data[0]; ?>","<?php echo $data[1]; ?>","<?php echo $data[2]; ?>"];
+<?php } ?>
+
+function add_to_selection(){
+	if($.inArray(current_id,session_arr) != 0){
+		if(session_arr.length == 3){
+			session_arr[0] = session_arr[1];
+			session_arr[1] = session_arr[2];
+			session_arr[2] = current_id;
+		} else {
+			session_arr[session_arr.length] = current_id;
+		}
+		$("#session_select_1").html(session_data[session_arr[0]][0]);
+		$("#session_select_2").html(session_data[session_arr[1]][0]);
+		$("#session_select_3").html(session_data[session_arr[2]][0]);
+	}
+	
 }
 </script>
