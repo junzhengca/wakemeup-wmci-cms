@@ -85,10 +85,22 @@
     </div>
     <h2>FINISHED?</h2>
     <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after submit.</h2>
-    <div class="red_button">SUBMIT YOUR CHOICES</div>
+    <div class="red_button" onClick="open_submit_window();">SUBMIT YOUR CHOICES</div>
     <h2>HAVE A PROFILE CODE?</h2>
     <div class="red_button">RETRIVE YOUR CHOICES</div>
     <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
+</div>
+
+<div id="window_mask"></div>
+<div id="submit_window">
+	<h1>SUBMIT YOUR CHOICES</h1>
+    <h2>REMEMBER: YOU CAN ALWAYS CHANGE YOUR MIND BEFORE xx/xx</h2>
+    <form>
+    	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text">
+        <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text">
+        <input type="text" id="engteacher_txt" placeholder="Your English Teacher" class="std_text">
+    </form>
+    <button class="red_button" style="width:502px; text-align:center;" onClick="submit_selection();">SUBMIT AND GET A PROFILE CODE</button>
 </div>
 <script type="text/javascript">
 $("#content_container").on('scroll',function(){
@@ -120,7 +132,7 @@ var session_data = [];
 <?php } ?>
 
 function add_to_selection(){
-	if($.inArray(current_id,session_arr) != 0){
+	if(!inArray(current_id,session_arr)){
 		if(session_arr.length == 3){
 			session_arr[0] = session_arr[1];
 			session_arr[1] = session_arr[2];
@@ -132,6 +144,56 @@ function add_to_selection(){
 		$("#session_select_2").html(session_data[session_arr[1]][0]);
 		$("#session_select_3").html(session_data[session_arr[2]][0]);
 	}
-	
+}
+
+function open_submit_window(){
+	if(session_arr.length != 3){
+		alert("Please choose 3 sessions");
+		return false;	
+	}
+	TweenLite.to($("#submit_window"),1,{'top':'0px'});
+	$("#window_mask").fadeIn();	
+}
+
+function close_submit_window(){
+	TweenLite.to($("#submit_window"),1,{'top':'-800px'});
+	$("#window_mask").fadeOut();	
+}
+
+function submit_selection(){
+	if($("#firstname_txt").val() == "" || $("#lastname_txt").val() == "" || $("#engteacher_txt").val() == ""){
+		alert("Please fill out the form completely");
+		return false;	
+	}
+	close_submit_window();
+	choices = "";
+	for(i=0;i<session_arr.length;i++){
+		if(i == 2){
+			choices = choices + session_arr[i].toString();
+		} else {
+			choices = choices + session_arr[i].toString() + ",";
+		}
+	}
+	$.ajax({url:"sec_script/wmciwakemeup_portal.php",type:"GET",data:{
+		"firstname":$("#firstname_txt").val(),
+		"lastname":$("#lastname_txt").val(),
+		"englishteacher":$("#engteacher_txt").val(),
+		"choices":choices,
+		"mode":"submit"
+	},success: function(data){
+		alert("Thank you for submitting your choices, please remember the following code:\n==========\n" + data + "\n==========\nYou can use this code to modify your choices before xx/xx");
+		window.location.reload();
+	}});
+}
+
+function inArray(value,array){
+	isin = false;
+	for(i=0;i<array.length;i++){
+		if(value == array[i]){
+			isin = true;
+			break;	
+		}
+	}
+	return isin;
 }
 </script>
