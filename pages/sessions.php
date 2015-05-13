@@ -14,7 +14,7 @@
 			  "Deeann Mercier - Executive Director, Lighthouse<br> Roy McCallum - Mobile Outreach",
 			"A 2012 count in Saskatoon found 372 people were homeless. Since that time the Lighthouse Supported Living has taken the lead in Saskatoon in providing innovated programs to provide emergency shelter, supported living and affordable housing for homeless individuals. <br> Roy works with the Lighthouse Mobile Outreach which goes into the community and transports homeless or at-risk individuals and provides street outreach. His broad work and life experience helps him connect to those in need of support and provides mentorship for kids in his community. DeeAnn heads the Lighthouse fundraising and media relations and helped plan the first YXE Connects, a free one-stop shop for the community to access free services and resources aimed at those in core neighbourhoods. This talk will focus on the work the Lighthouse does in Saskatoon and how youth can get involved to make a difference in their community with a Q and A to follow."),
 		array("Urban Planning 101",
-			  "Marian Loewen - City Counsellor",
+			  "Mairin Loewen - City Counsellor",
 			  "Saskatoon is growing quickly! So how do we make sure we grow into attractive, inclusive, and efficient place? This session will include a hands-on urban design challenge for participants and will also provide an opportunity for discussion about what City Hall does and how we can get better at it."),
 		array("French Canadian and Métis Dance",
 			  "Jeff Soucy - Teacher, WMCI",
@@ -70,7 +70,7 @@
 </div>
 <div id="session_select_block">
 	<h1>Selections</h1>
-    <h2 style="font-size:0.8em;">CLICK + IN DETAILS PANEL TO ADD A SESSION</h2>
+    <h2 id="selections_sub" style="font-size:0.8em;">CLICK + IN DETAILS PANEL TO ADD A SESSION</h2>
     <div class="session_select_card">
     	<div class="session_select_card_num">1</div>
         <h1 id="session_select_1" style="padding-left:30px; font-size:1em;"></h1>
@@ -87,20 +87,28 @@
     <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after submit.</h2>
     <div class="red_button" onClick="open_submit_window();">SUBMIT YOUR CHOICES</div>
     <h2>HAVE A PROFILE CODE?</h2>
-    <div class="red_button">RETRIVE YOUR CHOICES</div>
+    <div class="red_button" onClick="open_retrive_window();">RETRIVE YOUR CHOICES</div>
     <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
 </div>
 
-<div id="window_mask"></div>
+<div id="window_mask" onClick="close_retrive_window(); close_submit_window();"></div>
 <div id="submit_window">
 	<h1>SUBMIT YOUR CHOICES</h1>
     <h2>REMEMBER: YOU CAN ALWAYS CHANGE YOUR MIND BEFORE xx/xx</h2>
     <form>
-    	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text">
-        <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text">
-        <input type="text" id="engteacher_txt" placeholder="Your English Teacher" class="std_text">
+    	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text" />
+        <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text" />
+        <input type="text" id="engteacher_txt" placeholder="Your English Teacher" class="std_text" />
     </form>
     <button class="red_button" style="width:502px; text-align:center;" onClick="submit_selection();">SUBMIT AND GET A PROFILE CODE</button>
+</div>
+<div id="retrive_window" style="text-align:center;">
+	<h1 style="text-align:center;">RETRIVE YOUR CHOICES</h1>
+    <h2 style="font-size:1em; font-weight:100; text-align:center;">PLEASE USE THE 5-DIGIT CODE GIVEN</h2>
+    <form>
+    	<input type="text" id="retrive_code_txt" placeholder="Code" class="std_text">
+    </form>
+    <button class="red_button" style="width:502px; text-align:center;" onClick="retrive_selection();">RETRIVE MY INFO</button>
 </div>
 <script type="text/javascript">
 $("#content_container").on('scroll',function(){
@@ -144,6 +152,37 @@ function add_to_selection(){
 		$("#session_select_2").html(session_data[session_arr[1]][0]);
 		$("#session_select_3").html(session_data[session_arr[2]][0]);
 	}
+}
+
+function retrive_selection(){
+	$.ajax({url:"sec_script/wmciwakemeup_portal.php",dataType:"json",type:"GET",data:{
+		"code":$("#retrive_code_txt").val(),
+		"mode":"retrive"
+	},success: function(data){
+		if(data['RESULT']){
+			$("#selections_sub").html("YOU ARE UPDATING " + data['NAME'] + "'S SELECTIONS");
+			session_arr[0] = parseInt(data['SELECTIONS'][0]);
+			session_arr[1] = parseInt(data['SELECTIONS'][1]);
+			session_arr[2] = parseInt(data['SELECTIONS'][2]);
+			$("#session_select_1").html(session_data[session_arr[0]][0]);
+			$("#session_select_2").html(session_data[session_arr[1]][0]);
+			$("#session_select_3").html(session_data[session_arr[2]][0]);
+			close_retrive_window();
+			alert("Selection retrived");
+		} else {
+			alert("Code entered is not valid");
+		}
+	}});	
+}
+
+function open_retrive_window(){
+	$("#retrive_window").fadeIn();
+	$("#window_mask").fadeIn();	
+}
+
+function close_retrive_window(){
+	$("#retrive_window").fadeOut();
+	$("#window_mask").fadeOut();	
 }
 
 function open_submit_window(){
