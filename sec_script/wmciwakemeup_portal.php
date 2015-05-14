@@ -29,5 +29,14 @@
 			$echores["RESULT"] = false;
 		}
 		echo json_encode($echores);
+	} elseif ($_GET['mode'] == 'modify') {
+		$stmt = $niyumeDb->prepstmt("UPDATE sumbitinfo SET choices=? WHERE profilecode=?");
+		$choices = json_encode(explode(",",$_GET['choices']));
+		$stmt->bind_param("ss",$choices,$_GET['code']);
+		if($stmt->execute()){
+			echo "SUCCESS";	
+		} else {
+			echo "FAILED";	
+		}
 	}
 ?>

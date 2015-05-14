@@ -80,18 +80,19 @@
     	<div class="session_select_card_num">3</div>
         <h1 id="session_select_3" style="padding-left:30px; font-size:1em;"></h1>
     </div>
+    <input type="hidden" id="profile_code_txt" value="" />
     <h2>FINISHED?</h2>
-    <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after initial submit.</h2>
-    <div class="red_button" onClick="open_submit_window();">SUBMIT YOUR CHOICES</div>
+    <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before May 20th using profile code given after initial submit.</h2>
+    <div class="red_button" onClick="submit_selection_click();">SUBMIT YOUR CHOICES</div>
     <h2>HAVE A PROFILE CODE?</h2>
     <div class="red_button" onClick="open_retrive_window();">RETRIEVE YOUR CHOICES</div>
     <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
 </div>
 
-<div id="window_mask" onClick="close_retrive_window(); close_submit_window();"></div>
+<div id="window_mask" onClick="close_retrive_window(); close_submit_window(); close_detail_panel();"></div>
 <div id="submit_window">
 	<h1>SUBMIT YOUR CHOICES</h1>
-    <h2>REMEMBER: YOU CAN ALWAYS CHANGE YOUR MIND BEFORE xx/xx</h2>
+    <h2 style="padding-left:20px; padding-right:20px;">REMEMBER: YOU CAN ALWAYS CHANGE YOUR MIND BEFORE MAY 20th<br><b>IF YOU ALREADY SUBMITTED YOUR SELECTIONS, PLEASE DO NOT SUBMIT AGAIN! USE [RETRIEVE YOUR CHOICES] BUTTON TO MODIFY YOUR SELECTIONS. (UNLESS YOU FORGOT YOUR CODE)</b></h2>
     <form>
     	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text" />
         <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text" />
@@ -124,10 +125,12 @@ function open_detail_panel(title,speaker,info,id) {
 	$("#details_panel_speaker").html(speaker);
 	$("#details_panel_info").html(info);
 	current_id = id;
+	$("#window_mask").fadeIn();	
 }
 
 function close_detail_panel(){
 	$("#details_panel").fadeOut();
+	$("#window_mask").fadeOut();	
 }
 
 var session_arr = [];
@@ -164,6 +167,7 @@ function retrive_selection(){
 			$("#session_select_1").html(session_data[session_arr[0]][0]);
 			$("#session_select_2").html(session_data[session_arr[1]][0]);
 			$("#session_select_3").html(session_data[session_arr[2]][0]);
+			$("#profile_code_txt").val($("#retrive_code_txt").val());
 			close_retrive_window();
 			alert("Selection retrived");
 		} else {
@@ -202,7 +206,7 @@ function submit_selection(){
 		return false;	
 	}
 	close_submit_window();
-	choices = "";
+	var choices = "";
 	for(i=0;i<session_arr.length;i++){
 		if(i == 2){
 			choices = choices + session_arr[i].toString();
@@ -220,6 +224,33 @@ function submit_selection(){
 		alert("Thank you for submitting your choices, please remember the following code:\n==========\n" + data + "\n==========\nYou can use this code to modify your choices before xx/xx");
 		window.location.reload();
 	}});
+}
+
+function submit_selection_click(){
+	var choices = "";
+	for(i=0;i<session_arr.length;i++){
+		if(i == 2){
+			choices = choices + session_arr[i].toString();
+		} else {
+			choices = choices + session_arr[i].toString() + ",";
+		}
+	}
+	if($("#profile_code_txt").val() == ""){
+		open_submit_window();
+	} else {
+		$.ajax({url:"sec_script/wmciwakemeup_portal.php",type:"GET",data:{
+			"code":$("#profile_code_txt").val(),
+			"choices":choices,
+			"mode":"modify"
+		},success: function(data){
+			if(data == "SUCCESS"){
+				alert("Choices modified");
+				window.location.reload();
+			} else {
+				alert("Unknown error, please try again");	
+			}
+		}});
+	}
 }
 
 function inArray(value,array){
