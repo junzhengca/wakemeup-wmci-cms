@@ -28,24 +28,21 @@
 		array("Sex. Computers. Bullying. ",
 			  "Lana Morelli - Crown Prosecutor",
 			  "In this session we will discuss consent, child pornography, luring, extortion, and bullying.  We will discuss what you should do if you are a victim or if you know someone who is victimizing someone else.   "),
-		array("-",
+		array("Righting a Wrong - Achieving Equity",
 			  "George Rathwell",
-			  ""),
+			  "This session will provide a brief history of the relationship between our city and its public school system and the Whitecap Dakota First Nation. Through the evolution of an alliance between our two communities, great steps have been made to provide equitable educational opportunities for the children of the Whitecap Dakota First Nation. This is a unique multi-government model in our country and addresses inequities in funding and opportunity that have existed under the Indian Act throughout our nation&rsquo;s history."),
 		array("Anxiety and Burnout in the Workforce: How to protect yourself",
 			  "Coralee Pringle-Nelson - Registered Psychologist , Coordinator: Counselling Services / Saskatoon Public Schools",
 			  ""),
 		array("Whitecap Dakota First Nation’s History and role in the formation of Saskatoon & Celebration of Success",
 			  "Chief Darcy Bear or Murray Long - Whitecap Dakota First Nation",
 			  ""),
-		array("-",
-			  "Brenda Green - Superintendent of Education",
-			  ""),
 		array("Domestic Violence in Saskatoon",
 			  "Vernon Linklater - Saskatoon Indian and Metis Friendship Centre School Board Trustee",
-			  "The Teaching on domestic violence will be shared in a circle formation.  Vernon will share personal stories of violent acts he has seen and when he did his first violent act.  Humor will be used as a teaching tool.  There will be opportunity for sharing within the circle."),
-		array("-",
-			  "Kendal Netmaker - Neechie Gear",
-			  "")
+			  "The Teaching on domestic violence will be shared in a circle formation. Vernon will share personal stories of violent acts he has seen and when he did his first violent act. Humor will be used as a teaching tool. There will be opportunity for sharing within the circle."),
+		array("Perspectives on Policing and Leadership",
+			  "Ernie Louttit - Retired Saskatoon police officer and author of  Indian Ernie",
+			  "Drawing on his personal experiences presents on the theme - Everything you do matters and everyone is a leader at some time. Disarming racism and avoiding crime are important personal choices young adults have the ability to make. Sounds dull but hang on…….")
 	);
 ?>
 <h1>Sessions</h1>
@@ -84,10 +81,10 @@
         <h1 id="session_select_3" style="padding-left:30px; font-size:1em;"></h1>
     </div>
     <h2>FINISHED?</h2>
-    <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after submit.</h2>
+    <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before xx/xx using profile code given after initial submit.</h2>
     <div class="red_button" onClick="open_submit_window();">SUBMIT YOUR CHOICES</div>
     <h2>HAVE A PROFILE CODE?</h2>
-    <div class="red_button" onClick="open_retrive_window();">RETRIVE YOUR CHOICES</div>
+    <div class="red_button" onClick="open_retrive_window();">RETRIEVE YOUR CHOICES</div>
     <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
 </div>
 
@@ -103,7 +100,7 @@
     <button class="red_button" style="width:502px; text-align:center;" onClick="submit_selection();">SUBMIT AND GET A PROFILE CODE</button>
 </div>
 <div id="retrive_window" style="text-align:center;">
-	<h1 style="text-align:center;">RETRIVE YOUR CHOICES</h1>
+	<h1 style="text-align:center;">RETRIEVE YOUR CHOICES</h1>
     <h2 style="font-size:1em; font-weight:100; text-align:center;">PLEASE USE THE 5-DIGIT CODE GIVEN</h2>
     <form>
     	<input type="text" id="retrive_code_txt" placeholder="Code" class="std_text">
