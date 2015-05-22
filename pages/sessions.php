@@ -6,7 +6,7 @@
 			  "Many First Nation communities are not able to have clean, safe drinking water. This presentation will outline some of the historical, financial, environmental, social/cultural, and political reasons as to why this occurs. Stories will also be told regarding the sacredness of water from a First Nations perspective. The information is based on research conducted with numerous Saskatchewan First Nations communities and the University of Saskatchewan."),
 		array("Current Socio-Economic and Political Issues facing Aboriginal People",
 			  "Dion Tootoosis - Cultural Mentor",
-			  ""),
+			  "An insightful and educational presentation based upon the personal and political life experiences of Dion Tootoosis.  This workshop will provide participants with several interactive, humorous and challenging exercises designed to inspire awareness on issues such as Indigenous Imagery in the Media, Traditional Ways of Perception, Colonization, Decolonization and Healing through Building Cultural Capacity.  There are no age, gender, tribe or race restrictions to attending this workshop, inclusive to everyone."),
 		array("Reclaiming Culture",
 			  "Don Speidel - Saskatoon Public Schools Cultural Resource Liaison",
 			  ""),
@@ -33,20 +33,24 @@
 			  "This session will provide a brief history of the relationship between our city and its public school system and the Whitecap Dakota First Nation. Through the evolution of an alliance between our two communities, great steps have been made to provide equitable educational opportunities for the children of the Whitecap Dakota First Nation. This is a unique multi-government model in our country and addresses inequities in funding and opportunity that have existed under the Indian Act throughout our nation&rsquo;s history."),
 		array("Anxiety and Burnout in the Workforce: How to protect yourself",
 			  "Coralee Pringle-Nelson - Registered Psychologist , Coordinator: Counselling Services / Saskatoon Public Schools",
-			  ""),
-		array("Whitecap Dakota First Nation’s History and role in the formation of Saskatoon & Celebration of Success",
-			  "Chief Darcy Bear or Murray Long - Whitecap Dakota First Nation",
-			  ""),
+			  "The world of work and career is an exciting place to be.  New adventures with the potential for great life outcomes—financial, relational and professional—are out there.  Despite all the great things associated with starting a job or entering a career, there are some ways of thinking and relating that are helpful for ensuring that work experiences remain positive. This session will talk about how to keep yourself in a mentally and emotionally healthy state so you can thrive in the world of work despite expected challenges that come your way over the course of your career."),
+		array("Alliances and Partnerships – Whitecap Dakota First Nation",
+			  "Stephanie Danyluk and Murray Long - Whitecap Dakota First Nation",
+			  "Alliance and partnerships have long been used as a nation-building tool by the Dakota Nation. <br>This presentation looks at examples of historical and present-day alliances and partnerships of the Whitecap Dakota First Nation—including governance and economic development—to show how Whitecap’s spirit of alliance informs the successes of the community today."),
 		array("Domestic Violence in Saskatoon",
 			  "Vernon Linklater - Saskatoon Indian and Metis Friendship Centre School Board Trustee",
 			  "The Teaching on domestic violence will be shared in a circle formation. Vernon will share personal stories of violent acts he has seen and when he did his first violent act. Humor will be used as a teaching tool. There will be opportunity for sharing within the circle."),
 		array("Perspectives on Policing and Leadership",
 			  "Ernie Louttit - Retired Saskatoon police officer and author of  Indian Ernie",
-			  "Drawing on his personal experiences presents on the theme - Everything you do matters and everyone is a leader at some time. Disarming racism and avoiding crime are important personal choices young adults have the ability to make. Sounds dull but hang on…….")
+			  "Drawing on his personal experiences presents on the theme - Everything you do matters and everyone is a leader at some time. Disarming racism and avoiding crime are important personal choices young adults have the ability to make. Sounds dull but hang on……."),
+		array("Drugs and Gangs in Saskatoon",
+			  "Kevin Schwartz - Saskatoon Police Officer",
+			  "Do you know what gang colors are?  Do you know the drugs on the street?")
 	);
 ?>
 <h1>Sessions</h1>
 <h3>CLICK ON TITLE TO VIEW MORE</h3>
+<div id="sessionfix"></div>
 <?php foreach($sessions as $key=>$data) { ?>
 <div class="sessions_block" onClick='open_detail_panel("<?php echo $data[0]; ?>","<?php echo $data[1]; ?>","<?php echo $data[2]; ?>",<?php echo $key; ?>)'>
 	<h4><?php echo $data[0]; ?></h4>
@@ -81,12 +85,9 @@
         <h1 id="session_select_3" style="padding-left:30px; font-size:1em;"></h1>
     </div>
     <input type="hidden" id="profile_code_txt" value="" />
-    <h2>FINISHED?</h2>
+    <h2>DISABLED</h2>
     <h2 style="font-size:0.5em; opacity:0.7;">Remember, you can always modify your choices before May 20th using profile code given after initial submit.</h2>
-    <div class="red_button" onClick="submit_selection_click();">SUBMIT YOUR CHOICES</div>
-    <h2>HAVE A PROFILE CODE?</h2>
-    <div class="red_button" onClick="open_retrive_window();">RETRIEVE YOUR CHOICES</div>
-    <h2 style="font-size:0.5em; opacity:0.7;">Powered by Niyume Private API / Niyume Cloud Processing Stack © Jun Zheng All Rights Reserved</h2>
+    <div class="red_button">DISABLED</div>
 </div>
 
 <div id="window_mask" onClick="close_retrive_window(); close_submit_window(); close_detail_panel();"></div>
@@ -94,9 +95,9 @@
 	<h1>SUBMIT YOUR CHOICES</h1>
     <h2 style="padding-left:20px; padding-right:20px;">REMEMBER: YOU CAN ALWAYS CHANGE YOUR MIND BEFORE MAY 20th<br><b>IF YOU ALREADY SUBMITTED YOUR SELECTIONS, PLEASE DO NOT SUBMIT AGAIN! USE [RETRIEVE YOUR CHOICES] BUTTON TO MODIFY YOUR SELECTIONS. (UNLESS YOU FORGOT YOUR CODE)</b></h2>
     <form>
-    	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text" />
-        <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text" />
-        <input type="text" id="engteacher_txt" placeholder="Your English Teacher" class="std_text" />
+    	<input type="text" id="firstname_txt" placeholder="First Name" class="std_text" value="First Name"/>
+        <input type="text" id="lastname_txt" placeholder="Last Name" class="std_text" value="Last Name" />
+        <input type="text" id="engteacher_txt" placeholder="Your English Teacher" class="std_text" value="" />
     </form>
     <button class="red_button" style="width:502px; text-align:center;" onClick="submit_selection();">SUBMIT AND GET A PROFILE CODE</button>
 </div>
@@ -104,16 +105,18 @@
 	<h1 style="text-align:center;">RETRIEVE YOUR CHOICES</h1>
     <h2 style="font-size:1em; font-weight:100; text-align:center;">PLEASE USE THE 5-DIGIT CODE GIVEN</h2>
     <form>
-    	<input type="text" id="retrive_code_txt" placeholder="Code" class="std_text">
+    	<input type="text" id="retrive_code_txt" placeholder="Code" class="std_text" >
     </form>
     <button class="red_button" style="width:502px; text-align:center;" onClick="retrive_selection();">RETRIVE MY INFO</button>
 </div>
 <script type="text/javascript">
 $("#content_container").on('scroll',function(){
-	if($("#content_container").scrollTop() > 230){
-		$("#session_select_block").css({'position':'fixed','right':'70px','top':'25px'});
-	} else {
-		$("#session_select_block").css({'position':'absolute','right':'30px','top':'175px'});	
+	if($(document).width() > 1000){
+		if($("#content_container").scrollTop() > 230){
+			$("#session_select_block").css({'position':'fixed','right':'70px','top':'25px'});
+		} else {
+			$("#session_select_block").css({'position':'absolute','right':'30px','top':'175px'});	
+		}
 	}
 });
 

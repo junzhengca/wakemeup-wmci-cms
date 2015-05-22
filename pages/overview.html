@@ -1,11 +1,103 @@
 <div id="overview_background"></div>
+<h1>My Sessions</h1>
+<p style="padding:10px; text-align:center; line-height:40px; padding-left:30px; padding-right:30px; ">
+	Forgot where to go? Use your name to retrieve session info
+</p>
+<p style="text-align:center;">
+<button class="red_button" style="font-size:1.2em; height:auto; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;" onClick="open_location_window();">Display My Info</button><br>
+<button class="red_button" style="font-size:1.2em; height:auto; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;" onClick="display_location_info();">View All Sessions</button>
+</p>
 <h1>Overview</h1>
-<p style="font-size:1.5em; color:#4B4B4B; padding:30px; line-height:40px;">
+<p style="font-size:1.2em; color:#4B4B4B; padding:30px; line-height:40px;">
 <span style="font-size:2em;">W</span>MCI requests the presence of <b>all Grade 12 students</b> to participate in our first <b>Youth Symposium</b> during the morning of <b>Friday, May 22, 2015</b>.  The focus of our symposium is contemporary issues that face society today.  We want to expose you to <b>community issues</b> and provide a platform for you to consider what type of actions you may be able to take as you enter the adult world.  This morning we will be sharing information with you through <b>stories, voices, and experiences</b>.<br><br>
 Students need to select three sessions of interest using the sessions tab on this webpage.  Based on your choices, we will provide you with a schedule of sessions that includes time and location the morning of May 22.  Following our opening ceremony, you will experience a unique learning opportunity that we hope makes you <b>think, feel, and wonder</b>.<br><br>
 
 <span style="color:#b50000;">You are the leaders of the future – what are you going to do to make Saskatoon, Saskatchewan, and the world a better place?</span>
 </p>
 <p style="text-align:center;">
-<button class="red_button" style="font-size:1.5em; height:70px; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;" onClick="change_hash('sessions');">Browse Sessions</button>
+<button class="red_button" style="font-size:1.2em; height:auto; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;" onClick="change_hash('sessions');">Browse Sessions</button>
 </p>
+<h1><i class="fa fa-code"></i> Source Code</h1>
+<p style="padding:10px;line-height:40px; padding-left:30px; padding-right:30px; ">
+	You can view the source on GitHub, and you are welcome to use any code licensed under Creative Commons<br>
+    © Jun Zheng 2015 <br>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">WMCI Wake Me Up Web Application</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Jun Zheng</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</p>
+<p style="text-align:center;">
+<a href="https://github.com/kiroshiime/WMCI_WakeMeUp"><button class="red_button" style="font-size:1.2em; height:auto; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;" onClick="">View Source</button></a>
+</p>
+<div id="window_mask" onClick="close_location_window();"></div>
+<div id="session_location_window" style="bottom:-300px;">
+	<h2 style="color:rgba(106,106,106,1.00);">Display My Info</h2>
+    <p style="padding-left:10px; padding-right:10px;">Your Name, Please give a space between firstname and lastname, Firstname first please</p>
+    <input type="text" id="name_location_text" style="width:90%;" class="std_text" placeholder="Name" />
+    <p style="text-align:center;">
+        <button onClick="retrive_location_info();" class="red_button" style="font-size:1.2em; height:auto; text-align:center; padding-left:40px; padding-right:40px; opacity:0.7; box-shadow:#FFE5E5 0px 0px 20px; border-radius:5px;">Display</button>
+    </p>
+</div>
+<script type="text/javascript">
+	var sessions = [
+		["Water Quality Issues in Saskatchewan – Inequities on and off the Reserve and the Impact on Culture","SESSION CANCELLED, SORRY"],
+		["Current Socio-Economic and Political Issues facing Aboriginal People","Courtyard<br>ONLY OFFERED IN SESSION 1"],
+		["Reclaiming Culture","Room 203"],
+		["Homelessness in Saskatoon","Projection Room 234"],
+		["Urban Planning 101","Room 102"],
+		["French Canadian and Métis Dance","Dance Studio Room 116<br>Come prepared to dance!!!"],
+		["Women in Politics and Journalism","Library – Area 1"],
+		["The Story of My Escape from Afghanistan","Room 212"],
+		["Sex. Computers. Bullying. ","Room 235"],
+		["Righting a Wrong - Achieving Equity","Room 228<br>ONLY OFFERED IN SESSION 1"],
+		["Anxiety and Burnout in the Workforce: How to protect yourself","Room 121<br>ONLY OFFERED IN SESSIONS 1 AND 2"],
+		["Alliances and Partnerships – Whitecap Dakota First Nation","Room 103"],
+		["Domestic Violence in Saskatoon","Room 101<br>Circle Format"],
+		["Perspectives on Policing and Leadership","Library – Area 2"],
+		["Drugs and Gangs in Saskatoon","Auditorium"]
+	];
+	function open_location_window(){
+		TweenLite.to($("#session_location_window"),0.5,{'bottom':'0px'});
+		$("#window_mask").fadeIn();
+	}
+	function close_location_window(){
+		TweenLite.to($("#session_location_window"),0.5,{'bottom':'-300px'});
+		$("#window_mask").fadeOut();
+	}
+	function expand_location_window(){
+		TweenLite.to($("#session_location_window"),0.5,{'height':'100%','bottom':'0px'});
+		$("#session_location_window").html("");
+	}
+	function retrive_location_info(){
+		$.ajax({url:"sec_script/retrive_location_info.php",type:"POST",dataType:"json",data:{
+			"name":$("#name_location_text").val()
+		},success: function(data){
+			if(data['RESULT'] == 'FAILED'){
+				alert("Oops, error\n" + data['MESSAGE']);
+			} else {
+				expand_location_window();
+				$("#session_location_window").css({'overflow-y':'scroll'});
+				appendstring = "<h1>Your Selections</h1>";
+				appendstring += "<h4 style='padding:10px'>" + sessions[data['DATA']['choices'][0]][0] + "</h4>"
+				appendstring += "<h3 style='padding:10px'>" + sessions[data['DATA']['choices'][0]][1] + "</h3>"
+				appendstring += "<h4 style='padding:10px'>" + sessions[data['DATA']['choices'][1]][0] + "</h4>"
+				appendstring += "<h3 style='padding:10px'>" + sessions[data['DATA']['choices'][1]][1] + "</h3>"
+				appendstring += "<h4 style='padding:10px'>" + sessions[data['DATA']['choices'][2]][0] + "</h4>"
+				appendstring += "<h3 style='padding:10px'>" + sessions[data['DATA']['choices'][2]][1] + "</h3>"
+				$("#session_location_window").html(appendstring);
+				//alert("THIS IS YOUR SELECTIONS\n" + 
+				//sessions[data['DATA']['choices'][0]][0] + "\n" + sessions[data['DATA']['choices'][0]][1] + "\n" +
+				//sessions[data['DATA']['choices'][1]][0] + "\n" + sessions[data['DATA']['choices'][1]][1] + "\n" +
+				//sessions[data['DATA']['choices'][2]][0] + "\n" + sessions[data['DATA']['choices'][2]][1] + "\n");
+			}
+		}});	
+	}
+	
+	function display_location_info(){
+		expand_location_window();
+		$("#session_location_window").css({'overflow-y':'scroll'});
+		appendstring = "<h1>All Sessions</h1>";
+		for(i=0;i<15;i++){
+			appendstring += "<h4 style='padding:10px'>" + sessions[i][0] + "</h4>"
+			appendstring += "<h3 style='padding:10px'>" + sessions[i][1] + "</h3>"
+		}
+		$("#session_location_window").html(appendstring);
+	}
+</script>

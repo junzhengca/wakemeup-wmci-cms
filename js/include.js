@@ -22,17 +22,17 @@ function hash_changed(){
 function hash_change_page(){
 	$("#loading_icon").show();
 	if(window.location.hash == "#overview"){
-		$.ajax({url:"pages/overview.html",success: function(data){
+		$.ajax({url:"pages/overview.html?v=1",success: function(data){
 			$("#content_text_container").html(data);
 			$("#loading_icon").hide();
 		}});
 	} else if (window.location.hash == "#timetable") {
-		$.ajax({url:"pages/timetable.html",success: function(data){
+		$.ajax({url:"pages/timetable.html?v=1",success: function(data){
 			$("#content_text_container").html(data);
 			$("#loading_icon").hide();
 		}});
 	} else if (window.location.hash == "#sessions") {
-		$.ajax({url:"pages/sessions.php",success: function(data){
+		$.ajax({url:"pages/sessions.php?v=1",success: function(data){
 			$("#content_text_container").html(data);
 			$("#loading_icon").hide();
 		}});
@@ -53,6 +53,10 @@ function startup_hash_check(){
 		$("#splash_container").hide();
 		hash_changed();
 	}
+}
+
+function close_reminder(){
+	$("#reminder_container").fadeOut();	
 }
 
 startup_hash_check();
