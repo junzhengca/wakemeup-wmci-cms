@@ -1,49 +1,34 @@
 <?php
 	//Session data
 	$sessions = array(
+		array("Blanket Simulation (Workshop)","TBA","TBA"),
+		array("Slam Poetry (Workshop)","TBA","TBA"),
+		array("Art, Jewelry and Creations with our Community (Workshop)","TBA","TBA"),
 		array("Water Quality Issues in Saskatchewan – Inequities on and off the Reserve and the Impact on Culture",
 			  "Rebecca Zagozewski - Project manager School of Public Health, U of S Water Keeper<br> Jeff McLeod - Sturgeon Lake First Nation Member",
 			  "Many First Nation communities are not able to have clean, safe drinking water. This presentation will outline some of the historical, financial, environmental, social/cultural, and political reasons as to why this occurs. Stories will also be told regarding the sacredness of water from a First Nations perspective. The information is based on research conducted with numerous Saskatchewan First Nations communities and the University of Saskatchewan."),
-		array("Current Socio-Economic and Political Issues facing Aboriginal People",
-			  "Dion Tootoosis - Cultural Mentor",
-			  "An insightful and educational presentation based upon the personal and political life experiences of Dion Tootoosis.  This workshop will provide participants with several interactive, humorous and challenging exercises designed to inspire awareness on issues such as Indigenous Imagery in the Media, Traditional Ways of Perception, Colonization, Decolonization and Healing through Building Cultural Capacity.  There are no age, gender, tribe or race restrictions to attending this workshop, inclusive to everyone."),
-		array("Reclaiming Culture",
-			  "Don Speidel - Saskatoon Public Schools Cultural Resource Liaison",
-			  ""),
-		array("Homelessness in Saskatoon",
-			  "Deeann Mercier - Executive Director, Lighthouse<br> Roy McCallum - Mobile Outreach",
-			"A 2012 count in Saskatoon found 372 people were homeless. Since that time the Lighthouse Supported Living has taken the lead in Saskatoon in providing innovated programs to provide emergency shelter, supported living and affordable housing for homeless individuals. <br> Roy works with the Lighthouse Mobile Outreach which goes into the community and transports homeless or at-risk individuals and provides street outreach. His broad work and life experience helps him connect to those in need of support and provides mentorship for kids in his community. DeeAnn heads the Lighthouse fundraising and media relations and helped plan the first YXE Connects, a free one-stop shop for the community to access free services and resources aimed at those in core neighbourhoods. This talk will focus on the work the Lighthouse does in Saskatoon and how youth can get involved to make a difference in their community with a Q and A to follow."),
 		array("Urban Planning 101",
 			  "Mairin Loewen - City Counsellor",
 			  "Saskatoon is growing quickly! So how do we make sure we grow into attractive, inclusive, and efficient place? This session will include a hands-on urban design challenge for participants and will also provide an opportunity for discussion about what City Hall does and how we can get better at it."),
 		array("French Canadian and Métis Dance",
 			  "Jeff Soucy - Teacher, WMCI",
 			  "Students will learn some basic Métis and French Canadian gigue steps as well as a few round and square dances of Métis and French Canadian heritage. <br>Through active participation, students will learn how traditional dance played an important part in the communicative and socialization aspect of a community. <br>This will be a hands on active workshop.  You must be prepared to participate."),
-		array("Women in Politics and Journalism",
-			  "Bronwyn Eyre - Trustee",
-			  "Bronwyn Eyre has been a writer/editor, newspaper columnist and radio broadcaster. She’s currently a School Board trustee and provincial political candidate. <br>She asks: Do women have more to prove than men in traditionally male fields? Do they have to work harder to succeed?"),
 		array("The Story of My Escape from Afghanistan",
 			  "Hossiendad Alizadeh - WMCI Staff Member",
 			  ""),
 		array("Sex. Computers. Bullying. ",
 			  "Lana Morelli - Crown Prosecutor",
 			  "In this session we will discuss consent, child pornography, luring, extortion, and bullying.  We will discuss what you should do if you are a victim or if you know someone who is victimizing someone else.   "),
-		array("Righting a Wrong - Achieving Equity",
-			  "George Rathwell",
-			  "This session will provide a brief history of the relationship between our city and its public school system and the Whitecap Dakota First Nation. Through the evolution of an alliance between our two communities, great steps have been made to provide equitable educational opportunities for the children of the Whitecap Dakota First Nation. This is a unique multi-government model in our country and addresses inequities in funding and opportunity that have existed under the Indian Act throughout our nation&rsquo;s history."),
 		array("Anxiety and Burnout in the Workforce: How to protect yourself",
 			  "Coralee Pringle-Nelson - Registered Psychologist , Coordinator: Counselling Services / Saskatoon Public Schools",
 			  "The world of work and career is an exciting place to be.  New adventures with the potential for great life outcomes—financial, relational and professional—are out there.  Despite all the great things associated with starting a job or entering a career, there are some ways of thinking and relating that are helpful for ensuring that work experiences remain positive. This session will talk about how to keep yourself in a mentally and emotionally healthy state so you can thrive in the world of work despite expected challenges that come your way over the course of your career."),
-		array("Alliances and Partnerships – Whitecap Dakota First Nation",
-			  "Stephanie Danyluk and Murray Long - Whitecap Dakota First Nation",
-			  "Alliance and partnerships have long been used as a nation-building tool by the Dakota Nation. <br>This presentation looks at examples of historical and present-day alliances and partnerships of the Whitecap Dakota First Nation—including governance and economic development—to show how Whitecap’s spirit of alliance informs the successes of the community today."),
 		array("Domestic Violence in Saskatoon",
 			  "Vernon Linklater - Saskatoon Indian and Metis Friendship Centre School Board Trustee",
 			  "The Teaching on domestic violence will be shared in a circle formation. Vernon will share personal stories of violent acts he has seen and when he did his first violent act. Humor will be used as a teaching tool. There will be opportunity for sharing within the circle."),
 		array("Perspectives on Policing and Leadership",
 			  "Ernie Louttit - Retired Saskatoon police officer and author of  Indian Ernie",
 			  "Drawing on his personal experiences presents on the theme - Everything you do matters and everyone is a leader at some time. Disarming racism and avoiding crime are important personal choices young adults have the ability to make. Sounds dull but hang on……."),
-		array("Drugs and Gangs in Saskatoon",
+		array("Legalization of Marijuana? Good or Bad Idea",
 			  "Kevin Schwartz - Saskatoon Police Officer",
 			  "Do you know what gang colors are?  Do you know the drugs on the street?")
 	);
@@ -115,7 +100,7 @@ $("#content_container").on('scroll',function(){
 		if($("#content_container").scrollTop() > 230){
 			$("#session_select_block").css({'position':'fixed','right':'70px','top':'25px'});
 		} else {
-			$("#session_select_block").css({'position':'absolute','right':'30px','top':'175px'});	
+			$("#session_select_block").css({'position':'absolute','right':'30px','top':'175px'});
 		}
 	}
 });
@@ -128,12 +113,12 @@ function open_detail_panel(title,speaker,info,id) {
 	$("#details_panel_speaker").html(speaker);
 	$("#details_panel_info").html(info);
 	current_id = id;
-	$("#window_mask").fadeIn();	
+	$("#window_mask").fadeIn();
 }
 
 function close_detail_panel(){
 	$("#details_panel").fadeOut();
-	$("#window_mask").fadeOut();	
+	$("#window_mask").fadeOut();
 }
 
 var session_arr = [];
@@ -176,37 +161,37 @@ function retrive_selection(){
 		} else {
 			alert("Code entered is not valid");
 		}
-	}});	
+	}});
 }
 
 function open_retrive_window(){
 	$("#retrive_window").fadeIn();
-	$("#window_mask").fadeIn();	
+	$("#window_mask").fadeIn();
 }
 
 function close_retrive_window(){
 	$("#retrive_window").fadeOut();
-	$("#window_mask").fadeOut();	
+	$("#window_mask").fadeOut();
 }
 
 function open_submit_window(){
 	if(session_arr.length != 3){
 		alert("Please choose 3 sessions");
-		return false;	
+		return false;
 	}
 	TweenLite.to($("#submit_window"),1,{'top':'0px'});
-	$("#window_mask").fadeIn();	
+	$("#window_mask").fadeIn();
 }
 
 function close_submit_window(){
 	TweenLite.to($("#submit_window"),1,{'top':'-800px'});
-	$("#window_mask").fadeOut();	
+	$("#window_mask").fadeOut();
 }
 
 function submit_selection(){
 	if($("#firstname_txt").val() == "" || $("#lastname_txt").val() == "" || $("#engteacher_txt").val() == ""){
 		alert("Please fill out the form completely");
-		return false;	
+		return false;
 	}
 	close_submit_window();
 	var choices = "";
@@ -250,7 +235,7 @@ function submit_selection_click(){
 				alert("Choices modified");
 				window.location.reload();
 			} else {
-				alert("Unknown error, please try again");	
+				alert("Unknown error, please try again");
 			}
 		}});
 	}
@@ -261,7 +246,7 @@ function inArray(value,array){
 	for(i=0;i<array.length;i++){
 		if(value == array[i]){
 			isin = true;
-			break;	
+			break;
 		}
 	}
 	return isin;

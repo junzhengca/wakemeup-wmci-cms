@@ -1,5 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
+body {
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
+}
 
 
 #splash_container {
@@ -34,11 +37,13 @@
 	top:5px;
 	border:none;
 	background-color:transparent;
-	color:white;	
+	color:white;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #reminder_container p {
-	font-size:1.2em;	
+	font-size:1.2em;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #school_img {
@@ -124,14 +129,14 @@
 	right:50px;
 	background-image:url(img/enter_button.png);
 	background-size:contain;
-	opacity:0;	
+	opacity:0;
 	transition:all ease 0.3s;
 	cursor:pointer;
 }
 
 #enter_button:hover {
 	margin-right:25px;
-	transition:all ease 0.3s;	
+	transition:all ease 0.3s;
 }
 
 #retrive_window {
@@ -165,6 +170,7 @@
 	width:100%;
 	height:60px;
 	background-color:#E5E5E5;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #main_nav ul {
@@ -178,15 +184,15 @@
 	list-style:none;
 	display:inline-block;
 	font-size:1em;
-	font-family:Microsoft YaHei;
 	padding-left:10px;
 	padding-right:10px;
 	line-height:60px;
 	cursor:pointer;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #main_nav ul li:hover {
-	border-bottom:#b60000 3px solid;	
+	border-bottom:#b60000 3px solid;
 }
 
 .redtext_span {
@@ -233,7 +239,7 @@
 }
 
 #mobile_nav {
-	display:none;	
+	display:none;
 }
 
 #content_text_container {
@@ -265,7 +271,8 @@
 
 #content_text_container h1 {
 	font-size:2.5em;
-	color:#6A6A6A;	
+	color:#6A6A6A;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #content_text_container h3 {
@@ -279,7 +286,7 @@
 
 #timetable_container {
 	width:auto;
-	height:auto;	
+	height:auto;
 }
 
 .timetable_block {
@@ -296,6 +303,9 @@
 	position:absolute;
 	left:20px;
 	font-weight:100;
+	top:0;
+	margin:0;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #timetable_container .timetable_block h3 {
@@ -305,23 +315,28 @@
 	position:absolute;
 	right:20px;
 	font-weight:100;
+	top:0;
+	margin:0;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #timetable_container p {
 	padding-left:45px;
 	padding-right:45px;
 	line-height:30px;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #timetable_container ul {
 	padding-bottom:30px;
 	padding-right:45px;
-	font-family:Microsoft YaHei;	
+	font-family:Microsoft YaHei;
 }
 
 #timetable_container ul li {
 	padding-top:5px;
-	padding-bottom:5px;	
+	padding-bottom:5px;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 .sessions_block {
@@ -335,6 +350,7 @@
 	padding-bottom:20px;
 	transition:all ease 0.3s;
 	width:calc(100% - 400px);
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 .sessions_block:hover {
@@ -422,7 +438,7 @@
 	font-size:2.7em;
 	color:#DB9395;
 	left:10px;
-	top:10px;	
+	top:10px;
 }
 
 #details_panel_text {
@@ -431,7 +447,7 @@
 	position:absolute;
 	top:0px;
 	left:0px;
-	overflow-y:scroll;	
+	overflow-y:scroll;
 }
 
 #details_panel_text h1 {
@@ -460,6 +476,7 @@
 	font-weight:100;
 	padding-right:30px;
 	padding-bottom:50px;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 #details_panel_close {
@@ -512,11 +529,12 @@
 	text-align:right;
 	cursor:pointer;
 	transition:all ease 0.3s;
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
 }
 
 .red_button:hover {
 	background-color:#860E10;
-	transition:all ease 0.3s;	
+	transition:all ease 0.3s;
 }
 
 #submit_window {
@@ -583,15 +601,19 @@
 	z-index:99;
 }
 
+p {
+	font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
+}
 
-@media only screen 
+
+@media only screen
 and (max-width : 1000px) {
 	#timetable_container .timetable_block h2 {
 		position:relative;
 		display:block;
 		margin:0px;
 	}
-	
+
 	#session_select_block {
 		display:block;
 		position:absolute;
@@ -602,27 +624,27 @@ and (max-width : 1000px) {
 	#sessionfix{
 		height:500px;
 	}
-	
+
 	#details_panel_add {
 		display:block;
 	}
-	
+
 	.sessions_block {
-		width:auto;	
+		width:auto;
 	}
-	
+
 	#details_panel {
-		width:90%;	
+		width:90%;
 	}
-	
+
 	#content_text_container h3 {
-		text-align:center;	
+		text-align:center;
 	}
-	
+
 	#content_text_container h1 {
-		text-align:center;	
+		text-align:center;
 	}
-	
+
 	#timetable_container .timetable_block h3 {
 		position:relative;
 		text-align:left;
@@ -631,9 +653,9 @@ and (max-width : 1000px) {
 		padding-top:0px;
 		margin:0px;
 	}
-	
+
 	.timetable_block {
-		height:90px;	
+		height:90px;
 	}
 
 	#wakemeup_logo {
@@ -644,7 +666,7 @@ and (max-width : 1000px) {
 		left:10%;
 		background-position:center;
 	}
-	
+
 	#subtitle_img {
 		width:60%;
 		bottom:20px;
@@ -652,11 +674,11 @@ and (max-width : 1000px) {
 		background-repeat:no-repeat;
 		background-position:center;
 	}
-	
+
 	#bottom_mask {
 		height:100%;
 	}
-	
+
 	#location_img {
 		width:80%;
 		left:10%;
@@ -664,7 +686,7 @@ and (max-width : 1000px) {
 		background-repeat:no-repeat;
 		background-position:center;
 	}
-	
+
 	#enter_button {
 		width:60%;
 		position:absolute;
@@ -673,18 +695,18 @@ and (max-width : 1000px) {
 		background-repeat:no-repeat;
 		background-position:center;
 	}
-	
+
 	#content_logo {
 		width:60%;
 		left:20%;
 		top:20px;
 		height:60vw;
 	}
-	
+
 	#main_nav {
-		display:none;	
+		display:none;
 	}
-	
+
 	#mobile_nav {
 		display:block;
 		position:absolute;
@@ -693,7 +715,7 @@ and (max-width : 1000px) {
 		text-align:center;
 		width:100%;
 	}
-	
+
 	#mobile_nav ul {
 		padding:0px;
 		margin:0px;
@@ -706,10 +728,10 @@ and (max-width : 1000px) {
 		cursor:pointer;
 	}
 	#mobile_nav ul li:hover {
-		border-left:#b50000 3px solid;	
+		border-left:#b50000 3px solid;
 	}
-	
+
 	#content_text_container {
-		padding-top:calc(11.9vw + 170px);	
+		padding-top:calc(11.9vw + 170px);
 	}
 }
