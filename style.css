@@ -15,6 +15,7 @@ body {
 	overflow:hidden;
 }
 
+
 #reminder_container {
 	width:84%;
 	position:fixed;
@@ -113,7 +114,7 @@ body {
 #location_img {
 	height:100px;
 	width:402px;
-	background-image:url(img/location_img.png);
+	background-image:url(img/location_img.png?v=007);
 	background-size:contain;
 	position:absolute;
 	bottom:50px;
@@ -405,6 +406,25 @@ body {
 	padding-right:30px;
 	padding-top:10px;
 	padding-left:30px;
+}
+
+.session_select_delete {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	color:white;
+	line-height:30px;
+	position:absolute;
+	top:0;
+	left:0;
+	opacity:0;
+	cursor:pointer;
+	font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+}
+
+.session_select_delete:hover {
+	opacity:1;
 }
 
 #details_panel {
