@@ -70,6 +70,25 @@
 				echo "failed";
 			}
 		}
+	} else if($_GET["action"] == "GET_SUBMISSION_BY_STUDENTNUMBER"){
+		$stmt = $mysqliObj->prepare("SELECT * FROM wakemeup_submissions WHERE student_number=?");
+		$stmt->bind_param("s",$_GET["student_number"]);
+		if($stmt->execute()){
+			$stmt->store_result();
+			$stmt->bind_result($resultStudentNumber,$resultName,$resultSelection,$resultEnglishTeacher);
+			$result = array();
+			while($stmt->fetch()){
+				array_push($result,array(
+					"student_number"=>$resultStudentNumber,
+					"name"=>$resultName,
+					"selection"=>$resultSelection,
+					"english_teacher"=>$resultEnglishTeacher
+				));
+			}
+			echo json_encode($result);
+		} else {
+			echo "failed";
+		}
 	} else {
 		echo "method not found";
 	}

@@ -1,7 +1,7 @@
 <?php
 	
 ?>
-<h1>Build Your Schedule</h1>
+<h1>Locations</h1>
 <h3>CLICK ON TITLE TO VIEW MORE</h3>
 <div id="sessionfix"></div>
 <div id="sessions_container"></div>
@@ -18,7 +18,7 @@
     </div>
     <div id="details_panel_add" onClick="Student.addSession(sessionData[currentIndex]);"><i class="fa fa-plus"></i> ADD TO SELECTION</div>
 </div>
-<div id="session_select_block">
+<div id="session_select_block" style="display:none;">
 	<h1>Your Schedule</h1>
     <h2 id="selections_sub" style="font-size:0.8em;">CLICK + IN DETAILS PANEL TO ADD A SESSION<br>CLICK ON A SESSION BELOW TO DELETE</h2>
     <div class="session_select_card">

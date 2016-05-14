@@ -36,6 +36,11 @@ function hash_change_page(){
 			$("#content_text_container").html(data);
 			$("#loading_icon").hide();
 		}});
+	} else if (window.location.hash == "#myschedule") {
+		$.ajax({url:"pages/myschedule.php?v=1",success: function(data){
+			$("#content_text_container").html(data);
+			$("#loading_icon").hide();
+		}});
 	}
 }
 

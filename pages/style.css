@@ -573,7 +573,7 @@ and (max-width : 1000px) {
 		left:5%;
 	}
 	#sessionfix{
-		height:500px;
+		height:0;
 	}
 	
 	#details_panel_add {
